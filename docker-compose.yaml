@@ -1,0 +1,14 @@
+version: "3"
+services:
+  task9:
+    image: 127.0.0.1:10000/task9-app
+    build: .
+    ports:
+      - "8000:5000"
+    volumes:
+      - ./app:/app
+    environment:
+      FLASK_ENV: development
+    deploy:
+      mode: replicated
+      replicas: 4
