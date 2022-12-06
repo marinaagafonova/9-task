@@ -2,12 +2,12 @@ FROM python:3.8-alpine
 
 WORKDIR /app
 
-COPY . /app
+COPY requirements.txt .
 
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
-EXPOSE 5000
+COPY *.py .
 
-CMD ["python", "app.py"]
+EXPOSE 80
+
+ENTRYPOINT ["python", "app.py"]
